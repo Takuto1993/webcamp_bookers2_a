@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,28 +10,77 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <li><%= link_to "Bookers", "/" %></li>
-      <% if user_signed_in? %>
-       <li>
-         <%= link_to '投稿フォーム', new_book_path %>
-       </li>
-       <li>
-         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-       </li>
-      <% else %>
-       <li>
-         <%= link_to "Sign up", new_user_registration_path %>
-       </li>
-       <li>
-         <%= link_to "Log in", new_user_session_path %>
-       </li>
-      <% end %>
+
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container">
+       <a class="navbar-brand" href="/">
+        <span>Bookers</span>
+       </a>
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="true" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
+        <ul class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+           <a class="nav-link text-light" href="/">
+            <strong><i class="fas fa-home"></i><span>Home</span></strong>
+           </a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link text-light" href="/users">
+            <strong><i class="fas fa-users"></i><span>Users</span></strong>
+           </a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link text-light" href="/books">
+            <strong><i class="fas fa-book-open"></i><span>Books</span></strong>
+           </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
+             <strong><i class="fas fa-sign-out-alt"></i><span>logout</span></strong>
+          </li>
+        <% else %>
+          <li class="nav-item">
+           <a class="nav-link text-light" href="/">
+            <strong><i class="fas fa-home"></i><span>Home</span></strong>
+           </a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link text-light" href="homes/about">
+            <strong><i class="fas fa-link"></i><span>About</span></strong>
+           </a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link text-light" href="users/sign_up">
+            <strong><i class="fas fa-link"></i><span>sign up</span></strong>
+           </a>
+          </li>
+          <li class="nav-item">
+           <a class="nav-link text-light" href="/users/sign in">
+            <strong><i class="fas fa-sign-in-alt"></i><span>login</span></strong>
+           </a>
+          </li>
+        <% end %>
+        </ul>
+       </div>
+      </div>
+     </nav>
     </header>
-    <footer>
-      <p>CopyRight Infratop.inc</p>
-    </footer>
+    <main class="mb-auto">
     <%= yield %>
+    </main>
+    <footer>
+     <div class="container mt-5">
+      <div class="row">
+       <div class="mx-auto">
+        <p>CopyRight Infratop.inc</p>
+       </div>
+      </div>
+     </div>
+    </footer>
   </body>
 </html>
