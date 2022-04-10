@@ -25,9 +25,9 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-           <a class="nav-link text-light" href="/">
+           <%= link_to user_path(current_user), class:"nav-link text-light" do %>
             <strong><i class="fas fa-home"></i><span>Home</span></strong>
-           </a>
+           <% end %>
           </li>
           <li class="nav-item">
            <a class="nav-link text-light" href="/users">
@@ -42,6 +42,7 @@
           <li class="nav-item">
             <a class="nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">
              <strong><i class="fas fa-sign-out-alt"></i><span>logout</span></strong>
+            </a>
           </li>
         <% else %>
           <li class="nav-item">
