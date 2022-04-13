@@ -4,11 +4,25 @@
   <table class="table">
     <tbody>
       <td>
-        <%= image_tag @user.get_profile_image(100,100) %><br>
-        <%= link_to @user.name, user_path(@user.id) %>
+        <%= image_tag books.user.get_profile_image(100,100) %><br>
+        <%= link_to books.user.name, user_path(books.user.id) %>
       </td>
-      <td><%= @book.title %></td>
-      <td><%= @book.body %></td>
+      <td>
+        <%= link_to book_path(books.id) do %>
+        <%= books.title %>
+        <% end %>
+      </td>
+      <td><%= books.body %></td>
+      <td>
+        <%= link_to edit_book_path(@book), class:"btn btn-sm btn-success" do %>
+         <%= "Edit" %>
+        <% end %>
+      </td>
+      <td>
+        <%= link_to book_path(@book.id), method: :delete,  class:"btn btn-sm btn-danger", "data-confirm" => "本当に消しますか" do %>
+         <%= "Destroy" %>
+        <% end %>
+      </td>
     </tbody>
   </table>
 </div>

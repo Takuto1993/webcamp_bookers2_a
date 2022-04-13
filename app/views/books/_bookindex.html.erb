@@ -1,9 +1,9 @@
 <p id="notice"></p>
 <div class='col-md-8 ofset-md-1'>
  <h2>Books</h2>
- 
- <% @book.each do |book| %>
- 
+
+ <% books.each do |book| %>
+
  <table class='table table-hover table-inverse'>
   <thead>
    <tr>
@@ -15,13 +15,13 @@
   </thead>
   <tbody>
    <tr>
-    <td><%= image_tag @user.get_profile_image(100,100) %></td>
+    <td><%= image_tag book.user.get_profile_image(100,100) %></td>
     <td><%= link_to book.title, book_path(book.id) %></td>
     <td><%= book.body %></td>
    </tr>
   </tbody>
  </table>
- 
+
  <% end %>
- 
+
 </div>
