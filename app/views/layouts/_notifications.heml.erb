@@ -1,0 +1,13 @@
+<% flash.each do |key, value| %>
+ <% content_tag(:div, value, class: '#{key}') %>
+ 
+<% end %>
+
+<% if @book.errors.any? %>
+ <%= @book.errors.count %><h3>errors prohibited this obj from being saved:</h3>
+ <ul>
+   <% @book.errors.full_messages.each do |message| %>
+   <li><%= message %></li>
+   <% end %>
+ </ul>
+<% end %>
