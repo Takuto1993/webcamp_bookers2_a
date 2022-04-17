@@ -1,5 +1,5 @@
 <p id="notice"></p>
-<div class="container px-5 px-sm-0">
+
  <div class="row"></div>
   <div class="col-md-3"></div>
    <h2>User info</h2>
@@ -21,7 +21,7 @@
  </div>
 
   <h2 class="mt-3">New Book</h2>
-  <%= form_with model: books, url: '/books', method: :@post do |f| %>
+  <%= form_with model: books, url: books_path, method: :post do |f| %>
    <h4>Title</h4>
    <%= f.text_field :title %>
 
@@ -29,5 +29,5 @@
    <%= f.text_area :body %> <br>
    <%= f.submit 'Creat Book', class:"btn btn-success" %>
   <% end %>
- </div>
+
 
