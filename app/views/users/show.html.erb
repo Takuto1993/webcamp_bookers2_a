@@ -1,11 +1,12 @@
 <%= flash[:update_U] %>
 
+     <p id="notice"></p>
      <div class="container px-5 px-sm-0">
       <div class="row">
        <div class="col-md-3">
         <%= render 'books/list', books: @booknew, user: @user %>
        </div>
-       <div class='col-md-8 ofset-md-1'>
+       <div class='col-md-8 offset-md-1'>
         <%= render 'books/bookers', books: @book, user: @user.books %>
        </div>
       </div>
