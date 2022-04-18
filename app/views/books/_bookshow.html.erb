@@ -1,0 +1,31 @@
+<p id="notice"></p>
+  <h2>Book detail</h2>
+  <table class="table">
+    <tbody>
+      <td>
+        <%= image_tag books.user.get_profile_image(100,100) %><br>
+        <%= link_to books.user.name, user_path(books.user.id) %>
+      </td>
+      <td>
+        <%= link_to book_path(books.id) do %>
+        <%= books.title %>
+        <% end %>
+      </td>
+      <td><%= books.body %></td>
+      <td>
+        <% if @book.user == current_user %>
+          <%= link_to edit_book_path(@book), class:"btn btn-sm btn-success" do %>
+           <%= "Edit" %>
+          <% end %>
+        <% end %>
+      </td>
+      <td>
+        <% if @book.user == current_user %>
+         <%= link_to book_path(@book.id), method: :delete,  class:"btn btn-sm btn-danger", "data-confirm" => "本当に消しますか" do %>
+          <%= "Destroy" %>
+         <% end %>
+        <% end %>
+      </td>
+    </tbody>
+  </table>
+</div>
